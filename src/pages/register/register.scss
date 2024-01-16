@@ -1,0 +1,186 @@
+.background {
+  height:835px;
+  background: rgba(0, 0, 0, 0.5) url('../../assets/images/netflix.jpg');
+  background-blend-mode: darken;
+}
+
+.loginlogo {
+  img {
+    width: 12%;
+    margin-left: 30px;
+  }
+}
+
+.register-container {
+  position: absolute;
+  margin-left: 36%;
+  margin-top: 1%;
+  width: 440px;
+  height: 590px;
+  background-color: #000;
+
+  h1 {
+    color: #fff;
+    margin-top: 60px;
+    margin-left: 50px;
+  }
+
+  input {
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 320px;
+    height: 47px;
+    background-color: #333;
+    border-radius: 3px;
+    border: none;
+    font-size: 20px;
+
+    &::placeholder {
+      font-size: 17px;
+      margin-left: 15px;
+      padding: 12px;
+    }
+  }
+
+  input[type=submit] {
+    width: 320px;
+    height: 45px;
+    background-color: red;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 40px;
+  }
+
+  input[type=checkbox] {
+    width: 25px;
+    height: 18px;
+    border-radius: 5px;
+  }
+
+  label {
+    color: rgb(125, 119, 119);
+  }
+
+  .form a {
+    float: right;
+    margin-top: 24px;
+    margin-right: 64px;
+    color: rgb(125, 119, 119);
+    text-decoration: none;
+  }
+
+  .content {
+    position: absolute;
+    margin-top: 80px;
+    font-size: 9px;
+    margin-left: 55px;
+
+    h2 {
+      color: rgb(125, 119, 119);
+    }
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+// .alert {
+//      top: 0;
+//     position: absolute;
+//     right: 0;
+//     margin: 25px 25px 0px 0px;
+//  }
+
+// @media screen and (max-width: 992px) {
+//   .register-container {
+//     margin-left: 20%;
+//   }
+// }
+
+// @media screen and (max-width: 768px) {
+//   .background{
+//     height: 100%;
+//   }
+//   .register-container {
+//       margin-left: 0%;
+//     width: 100%;
+//   }
+  
+// .register-container input[type=submit] {
+//     width: 234px;
+//     background-color: red;
+//     color: #fff;
+//     border-radius: 3px;
+//     cursor: pointer;
+// }
+// .register-container input {
+//     margin-left: 20px;
+//     margin-top: 20px;
+//     width: 280px;
+//     height: 47px;
+//     background-color: #333;
+//     border-radius: 3px;
+//     border: none;
+//     font-size: 20px;
+// }
+// }
+
+// @media screen and (max-width: 720px) {
+//   .register-container {
+//     margin-top: 5%;
+//   }
+
+//   .register-container input[type=submit] {
+//     width: 200px;
+//   }
+
+//   .register-container input {
+//     width: 250px;
+//   }
+// }
+
+// @media screen and (max-width: 600px) {
+//   .register-container {
+//     margin-top: 10%;
+//   }
+
+//   .register-container input[type=submit] {
+//     width: 180px;
+//   }
+
+//   .register-container input {
+//     width: 230px;
+//   }
+
+//   .register-container h1 {
+//     margin-left: 20px;
+//   }
+// }
+
+// @media screen and (max-width: 360px) {
+//   .register-container {
+//     display: flex;
+//     margin-top: 15%;
+//   }
+
+//   .register-container input[type=submit] {
+//     width: 150px;
+//   }
+
+//   .register-container input {
+//     align-items: center;
+//     justify-content: center;
+//     width: 200px;
+//   }
+
+//   .register-container h1 {
+//     margin-left: 10px;
+//   }
+
+//   .loginlogo img {
+//     width: 18%;
+//   }
+// }
