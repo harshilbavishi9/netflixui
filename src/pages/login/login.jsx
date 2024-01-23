@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Alert from '@mui/material/Alert';
-import CheckIcon from '@mui/icons-material/Check';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './login.scss';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -30,32 +28,43 @@ const Login = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
+      console.log(response.status);
+      if (response.status === 401) {
+        toast.error('Plese filed all feild.', {
+          position: 'top-right',
+          autoClose: 2000,
+        });
+        return
+      }
       if (!response.ok) {
         throw new Error('Login failed');
       }
 
       const { token } = await response.json();
 
-      // Store the token in your application state or local storage
       localStorage.setItem('token', token);
 
-      // Display success message
-      setSuccessMessage('Login successful. Redirecting to home...');
-
-      // Redirect to home page after a delay
+      if (response.status === 200) {
+        toast.success('Login successful. Redirecting to home...', {
+          position: 'top-right',
+          autoClose: 2000,
+        });
+      }
       setTimeout(() => {
         navigate('/');
       }, 2000);
     } catch (error) {
       console.error('Login error:', error);
-      setError('Login failed. Please try again.');
+      toast.error('Login failed. Please try again.', {
+        position: 'top-right',
+        autoClose: 2000,
+      });
     }
   };
 
   return (
     <>
-      <div className="login-background">
+      <div className="bg-slate-900">
         <div className="loginlogo">
           <img src="../../assets/images/logo.png" alt="" />
         </div>
@@ -92,20 +101,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-
-     <div className='alert'>
-       {error && (
-        <Alert icon={<CheckIcon fontSize="inherit" />} className="custom-alert" severity="error">
-          {error}
-        </Alert>
-      )}
-
-      {successMessage && (
-        <Alert icon={<CheckIcon fontSize="inherit" />} className="custom-alert" severity="success">
-          {successMessage}
-        </Alert>
-      )}
-     </div>
     </>
   );
 };

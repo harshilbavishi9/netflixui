@@ -12,8 +12,9 @@ export default function MovieBanner({ type }) {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/movie/${id}`);
-        setMovieDetails(response.data.data); // Adjust based on your API response structure
+        const response = await axios.get(`https://netflix-kwcy.onrender.com/api/movie/${id}`);
+        setMovieDetails(response.data.data);
+        console.log(response.data.data)
         console.log('Fetched movie details:', response.data.data);
       } catch (error) {
         console.error('Error fetching movie details:', error);
@@ -32,27 +33,32 @@ export default function MovieBanner({ type }) {
     <div className='movie-container'>
       <div className="featured">
         {movieDetails.image && (
-          <img src={movieDetails.image[0]} alt={movieDetails.title} className='moviebannerImage'/>
+          <img src={movieDetails.image[0]} alt={movieDetails.title} className='moviebannerImage' />
         )}
         <div className="info">
           {movieDetails.logo && (
             <img src={movieDetails.logo[0]} alt={movieDetails.title} className='logoImage' />
           )}
-          <span className="title">
-            {movieDetails.title}
-          </span>
-          <span className="desc">
-            {movieDetails.description}
-          </span>
-          <div className="buttons">
-            <button className="play">
-              <PlayArrow />
-              <span>Play</span>
-            </button>
-            <button className="more">
-              <Info />
-              <span>Info</span>
-            </button>
+          <div className='movie-info'>
+            <h1>{movieDetails.title}</h1>
+            <div className='title-info-wrapper'>
+              <span className='none'>{movieDetails.year}</span>
+              <span>|</span>
+              <span>{movieDetails.genre.length === 1 ? movieDetails.genre.map((genre) => genre.title) : movieDetails.genre.map((genre) => genre.title+', ')}</span>
+              <span>|</span>
+              <span>{movieDetails.seasons.length === 0 ? movieDetails.duration + " minutes" : movieDetails.seasons.length + " Season"}</span>
+              <span>|</span>
+              <span>{movieDetails.language.map((item) => item)}</span>
+            </div>
+            <div className="info-description">
+              {movieDetails.description}
+            </div>
+            <div className="buttons">
+              <button className="play">
+                <PlayArrow />
+                <span>Play</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

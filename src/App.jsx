@@ -7,7 +7,6 @@ import Login from './pages/login/login';
 import Register from './pages/register/register';
 
 const App = () => {
-
   return (
     <Router>
       <Routes>

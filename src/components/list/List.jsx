@@ -5,19 +5,18 @@ import 'slick-carousel/slick/slick-theme.css';
 import "./list.scss";
 import { NavigateBefore, NavigateNext } from '@mui/icons-material';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom'
 
 const List = ({ apiEndpoint, listTitle }) => {
   const [movies, setMovies] = useState([]);
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(apiEndpoint);
-        if (response.data && response.data.data) {
+      const response = await axios.get(apiEndpoint);
+      if (response.data && response.data.data) {
           setMovies(response.data.data);
-          console.log('Fetched data:', response.data.data);
         } else {
           console.error('Invalid data format in the response:', response);
         }
@@ -27,7 +26,7 @@ const List = ({ apiEndpoint, listTitle }) => {
     };
 
     fetchData();
-  }, [apiEndpoint]);
+  });
 
   const settings = {
     dots: false,
@@ -37,11 +36,55 @@ const List = ({ apiEndpoint, listTitle }) => {
     slidesToScroll: 5,
     nextArrow: <NavigateNext />,
     prevArrow: <NavigateBefore />,
+     responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 5,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },  
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   const handleImageClick = (movieId) => {
     console.log(movieId, "movieIdmovieId");
-    navigate(`/movie/${movieId._id}`); // Use navigate instead of history.push
+    navigate(`/movie/${movieId._id}`);
   };
 
   return (

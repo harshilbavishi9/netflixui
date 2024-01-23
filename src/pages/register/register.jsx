@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './register.scss';
 
 const Register = () => {
   const [username, setusername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
 
   const navigate = useNavigate();
 
@@ -28,38 +26,45 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-     try {
-    const response = await fetch('http://localhost:5000/api/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, email, password }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Registration failed');
+    if (!username || !email || !password) {
+     toast.error('Please filed all feild.', {
+        position: 'top-right',
+        autoClose: 2000,
+      });
+      return 
     }
 
-    toast.success('Registration successful. Redirecting to login...', {
-      position: 'top-right',
-      autoClose: 2000,
-    });
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
 
-    setTimeout(() => {
-      navigate('/login');
-    }, 2000);
-  } catch (error) {
-    setError('Registration failed. Please try again.');
-    toast.error('Registration failed. Please try again.', {
-      position: 'top-right',
-      autoClose: 2000,
-    });
-    console.error('Registration error:', error);
-  } finally {
-    console.log("SAdsads");
-  }
-};
+      if (!response.ok) {
+        throw new Error('Registration failed');
+      }
+
+      toast.success('Registration successful. Redirecting to login...', {
+        position: 'top-right',
+        autoClose: 2000,
+      });
+
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
+    } catch (error) {
+      toast.error('Registration failed. Please try again.', {
+        position: 'top-right',
+        autoClose: 2000,
+      });
+      console.error('Registration error:', error);
+    } finally {
+      console.log('Registration  completed');
+    }
+  };
 
   return (
     <>

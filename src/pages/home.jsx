@@ -11,8 +11,8 @@ const Home = () => {
       <NavBar />
       <Featured type={"movie"} />
       <TopListPage />
-      <List apiEndpoint='http://localhost:5000/api/movie/genremovie/659d311dd7634b61e1d2f66e' listTitle='Drama on Netflix' />
-      <List apiEndpoint='http://localhost:5000/api/movie/genremovie/659d3162d7634b61e1d2f67c' listTitle='Anime you should like' />
+      <List apiEndpoint='https://netflix-kwcy.onrender.com/api/movie/genremovie/659d311dd7634b61e1d2f66e' listTitle='Drama on Netflix' />
+      <List apiEndpoint='https://netflix-kwcy.onrender.com/api/movie/genremovie/659d3162d7634b61e1d2f67c' listTitle='Anime you should like' />
     </div>
   );
 };
