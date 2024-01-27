@@ -15,48 +15,34 @@ const TopListPage = () => {
     prevArrow: <NavigateBefore />,
     responsive: [
       {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 5,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
+          slidesToScroll: 4,
+        },
       },
       {
-        breakpoint: 800,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+            {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -64,7 +50,7 @@ const TopListPage = () => {
       <><h2 className='h2tag'>Top 10 Shows</h2>
         <div className="wrapper">
           <Slider {...settings}>
-            <div className="item" style={"width: 100%;/* display: inline-block; */"}>
+            <div className="item" >
               <img src="//image.tmdb.org/t/p/w220_and_h330_face/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg" alt="Item 1" />
               <div>1</div>
             </div>

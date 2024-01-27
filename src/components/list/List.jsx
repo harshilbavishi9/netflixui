@@ -9,14 +9,15 @@ import { useNavigate } from 'react-router-dom'
 
 const List = ({ apiEndpoint, listTitle }) => {
   const [movies, setMovies] = useState([]);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-      const response = await axios.get(apiEndpoint);
-      if (response.data && response.data.data) {
+        const response = await axios.get(`https://netflix-kwcy.onrender.com/api/movie/genremovie/${apiEndpoint}`);
+        if (response.data && response.data.data) {
           setMovies(response.data.data);
+          console.log(response.data.data, "datatata")
         } else {
           console.error('Invalid data format in the response:', response);
         }
@@ -29,58 +30,65 @@ const List = ({ apiEndpoint, listTitle }) => {
   });
 
   const settings = {
-    dots: false,
+    rows: 1,
+    slidesPerRow: 1,
+    slidesToShow: 5.5,
     infinite: false,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    swipeToSlide: true,
+    slidesToScroll: 1,
+    lazyLoad: true,
+    // arrows: false,
     nextArrow: <NavigateNext />,
     prevArrow: <NavigateBefore />,
-     responsive: [
+    responsive: [
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 4.5,
+          slidesToScroll: 2,
+        }
+      },
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 5,
-          infinite: true,
-          dots: true
+          slidesToShow: 4.5,
+          slidesToScroll: 2,
         }
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
+          slidesToShow: 4.5,
           slidesToScroll: 2,
-          initialSlide: 2
         }
-      },  
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: false
+        }
+      },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false
+        }
+      },
+      {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+          arrows: false
         }
       }
     ]
   };
+
 
   const handleImageClick = (movieId) => {
     console.log(movieId, "movieIdmovieId");

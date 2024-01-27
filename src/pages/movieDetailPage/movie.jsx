@@ -3,6 +3,7 @@ import "./movie.scss";
 import NavBar from "../../components/navbar/navbar";
 import MovieBanner from "../../components/MovieBanner/MovieBanner";
 import MoreDetails from "../../components/moreDetails/MoreDetails";
+import Footer from "../../components/footer/Footer";
 
 const Movie = () => {
   return (
@@ -10,6 +11,7 @@ const Movie = () => {
       <NavBar />
       <MovieBanner />
       <MoreDetails/>
+      <Footer/>
     </div>
   );
 };

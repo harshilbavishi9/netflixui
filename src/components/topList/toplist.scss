@@ -1,6 +1,7 @@
 .slider-container {
   padding: 0 3%;
   position: relative;
+  margin-top: -100px;
 
   .h2tag {
     padding-left: 30px;
@@ -20,7 +21,7 @@
       transform-style: preserve-3d;
       transform: rotateY(-0.01deg);
 
-      > div {
+      >div {
         font-weight: bold;
         font-size: 200px;
         line-height: 1;
@@ -32,9 +33,8 @@
         left: -12px;
       }
 
-      > img {
+      >img {
         margin: 4px 0 4px 60px;
-        box-shadow: 0px 0px 32px black;
       }
     }
 
@@ -60,28 +60,13 @@
       }
     }
   }
+}
 
-  // Media Query for screens smaller than 768px
-  @media (min-width: 768px) {
-    .h2tag {
-      padding-left: 10px;
-    }
-
-    .item {
-      > div {
-        font-size: 100px;
-        -webkit-text-stroke: 4px white;
-        left: -6px;
-      }
-
-      > img {
-        margin: 4px 0 4px 30px;
-      }
-    }
+@media (max-width: 768px) {
+  .slider-container {
+    margin-top: 0
   }
-
-  // Media Query for screens smaller than 480px
-  @media (max-width: 480px) {
-   
+  .h2tag {
+    padding-top: 30px;
   }
 }

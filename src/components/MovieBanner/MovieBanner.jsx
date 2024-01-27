@@ -25,16 +25,17 @@ export default function MovieBanner({ type }) {
   }, [id]);
 
   if (!movieDetails) {
-    // Return some loading state or placeholder if movieDetails is still null
     return <div>Loading...</div>;
   }
 
   return (
     <div className='movie-container'>
       <div className="featured">
-        {movieDetails.image && (
-          <img src={movieDetails.image[0]} alt={movieDetails.title} className='moviebannerImage' />
-        )}
+        <div className='moviebanner-image'>
+          {movieDetails.image && (
+            <img src={movieDetails.image[0]} alt={movieDetails.title} className='moviebannerImage' />
+          )}
+        </div>
         <div className="info">
           {movieDetails.logo && (
             <img src={movieDetails.logo[0]} alt={movieDetails.title} className='logoImage' />
@@ -44,21 +45,16 @@ export default function MovieBanner({ type }) {
             <div className='title-info-wrapper'>
               <span className='none'>{movieDetails.year}</span>
               <span>|</span>
-              <span>{movieDetails.genre.length === 1 ? movieDetails.genre.map((genre) => genre.title) : movieDetails.genre.map((genre) => genre.title+', ')}</span>
+              <span>{movieDetails.genre.length === 1 ? movieDetails.genre.map((genre) => genre.title) : movieDetails.genre.map((genre) => genre.title + ', ')}</span>
               <span>|</span>
               <span>{movieDetails.seasons.length === 0 ? movieDetails.duration + " minutes" : movieDetails.seasons.length + " Season"}</span>
               <span>|</span>
               <span>{movieDetails.language.map((item) => item)}</span>
             </div>
-            <div className="info-description">
-              {movieDetails.description}
-            </div>
-            <div className="buttons">
-              <button className="play">
-                <PlayArrow />
-                <span>Play</span>
-              </button>
-            </div>
+            {/* <div className="info-description"> */}
+              <p>{movieDetails.description}</p><br/>
+              <span>Starring :</span><p>{movieDetails.cast}</p>
+            {/* </div> */}
           </div>
         </div>
       </div>
