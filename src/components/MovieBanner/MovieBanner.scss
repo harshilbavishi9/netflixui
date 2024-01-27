@@ -11,35 +11,25 @@
       width: 100%;
       position: relative;
 
-      img {
+      .img {
         object-fit: cover;
-        position: relative;
-        right: -6%;
+        background-size: cover;
+        background-position: center;
         height: 900px;
-        width: 100%
+        width: 100%;
       }
 
       &:before {
         content: "";
         position: absolute;
-        // bottom: 0;
         left: 0;
         top: 0;
         width: 80%;
         height: 100%;
-        // background: linear-gradient(transparent, rgba(0, 0, 0, 0.897), var(--main-color));
         pointer-events: none;
         background-image: linear-gradient(90deg, #181818 10%, hsla(0, 0%, 9%, .98) 20%, hsla(0, 0%, 9%, .97) 25%, hsla(0, 0%, 9%, .95) 35%, hsla(0, 0%, 9%, .94) 40%, hsla(0, 0%, 9%, .92) 45%, hsla(0, 0%, 9%, .9) 50%, hsla(0, 0%, 9%, .87) 55%, hsla(0, 0%, 9%, .82) 60%, hsla(0, 0%, 9%, .75) 65%, hsla(0, 0%, 9%, .63) 70%, hsla(0, 0%, 9%, .45) 75%, hsla(0, 0%, 9%, .27) 80%, hsla(0, 0%, 9%, .15) 85%, hsla(0, 0%, 9%, .08) 90%, hsla(0, 0%, 9%, .03) 95%, hsla(0, 0%, 9%, 0));
-        // position: fixed;
-        // top: 0;
-        // left: 0;
-        // width: 50%;
-        // height: 100%;
-        // pointer-events: none;
         z-index: 1;
-        /* Add z-index property as needed */
       }
-
     }
 
     .category {
@@ -65,15 +55,15 @@
     .info {
       width: 35%;
       position: absolute;
-      left: 6%;
       bottom: 20%;
+      left: 2%;
       color: white;
       display: flex;
       flex-direction: column;
       z-index: 1;
 
       .logoImage {
-        width: 100%;
+        width: 52%;
         max-width: 500px;
       }
 
@@ -85,7 +75,6 @@
           font-size: 24px;
           font-weight: 500;
           line-height: 30px;
-
         }
 
         .title-info-wrapper {
@@ -93,7 +82,6 @@
 
           .none {
             padding: 0;
-
           }
 
           span {
@@ -105,8 +93,6 @@
             line-height: 18px;
           }
         }
-
-        // .info-description {
 
         p {
           margin-top: 16px;
@@ -127,10 +113,6 @@
           font-weight: 300;
           margin-top: 16px;
         }
-
-
-        // }
-
 
         .buttons {
           padding-top: 16px;
@@ -165,5 +147,58 @@
         }
       }
     }
+  }
+
+  @media (max-width: 500px) {
+    .featured {
+      flex-direction: column;
+      align-items: center;
+
+      .moviebanner-image {
+        width: 100%;
+
+        .img {
+          height: 300px;
+          /* Adjust the height for smaller screens */
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 40%;
+          pointer-events: none;
+          background-image: none;
+          z-index: 1;
+        }
+      }
+
+      .info {
+        width: 100% !important;
+        top: 15%;
+        left: 0;
+        position: relative;
+        
+        text-align: center;
+
+        .logoImage {
+          width: 95%;
+          max-width: none;
+          /* Allow the logo image to take its full width */
+        }
+
+        .movie-info {
+          /* ... (unchanged) */
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .movie-container {
+    width: 100%;
   }
 }

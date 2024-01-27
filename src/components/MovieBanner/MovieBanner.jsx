@@ -31,9 +31,10 @@ export default function MovieBanner({ type }) {
   return (
     <div className='movie-container'>
       <div className="featured">
-        <div className='moviebanner-image'>
+        <div className='moviebanner-image' >
           {movieDetails.image && (
-            <img src={movieDetails.image[0]} alt={movieDetails.title} className='moviebannerImage' />
+          <div style={{ backgroundImage: `url(${movieDetails.image[0]})` }} className='img'></div>
+            // <img src={movieDetails.image[0]} alt={movieDetails.title} className='moviebannerImage' />
           )}
         </div>
         <div className="info">
